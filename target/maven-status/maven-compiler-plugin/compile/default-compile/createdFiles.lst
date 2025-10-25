@@ -1,0 +1,5 @@
+com\micro\userservice\BuisnessLogic\UserController.class
+com\micro\userservice\WorkFlowHandler.class
+com\micro\userservice\BuisnessLogic\UserPublisher.class
+com\micro\userservice\BuisnessLogic\UserService.class
+com\micro\userservice\DatabaseAdapter\Repository.class

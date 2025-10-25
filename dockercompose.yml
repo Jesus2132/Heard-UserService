@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  # 🐰 RabbitMQ broker
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: heard-rabbitmq
+    ports:
+      - "5672:5672"   # RabbitMQ (AMQP)
+      - "15672:15672" # RabbitMQ Management UI
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - heard-net
+
+  # 🍃 MongoDB database
+  mongodb:
+    image: mongo:6.0
+    container_name: heard-mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    command: ["mongod", "--bind_ip_all", "--noauth"]
+    networks:
+      - heard-net
+
+networks:
+  heard-net:
+    driver: bridge
+
+volumes:
+  rabbitmq_data:
+  mongo_data:
