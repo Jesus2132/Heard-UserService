@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: user-service
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/heard
+
+  cloud:
+    stream:
+      default-binder: rabbit
+      bindings:
+        userCreated-out-0:
+          destination: user.created
+          content-type: application/json
+
+  rabbitmq:
+    host: localhost
+    port: 5672
